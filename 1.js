@@ -72,5 +72,14 @@ promise
       img.className = "promise-avatar-example";
       document.body.appendChild(img);
   
-      setTimeout(() => img.remove(), 3000); // (*)
+      //setTimeout(() => img.remove(), 3000); // (*)
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          img.remove();
+          // после таймаута — вызов resolve,
+          // можно без результата, чтобы управление перешло в следующий then
+          // (или можно передать данные пользователя дальше по цепочке)
+          resolve();
+        }, 3000);
     });
+});
